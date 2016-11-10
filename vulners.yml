@@ -9,18 +9,5 @@
 tasks:
 - name: rpm-query
   shell: rpm -qa
-    register: packages
-    when: ansible_distribution == 'centos' or ansible_distribution == 'redhat'
-
-- name: vulners-check
-  uri:
-    url: https://vulners.com/api/v3/audit/audit/
-    return_content: yes
-    method: POST
-    body: "{{ packages_json }}"
-    body_format: json
-    HEADER_Content-Type: "application/json"
-    register: json_response
-    when: packages
-
-- debug: var=json_response.json
+     register: packages
+  when: ansible_distribution == 'centos' or ansible_distribution == 'redhat'
