@@ -2,9 +2,8 @@
 # Gathers package data from Host and submits to Vulners for checks
 - name: Vulners Scanning
   hosts: tag_ansible_group
-
-vars:
-   packages_json: "{ 'version': '{{ ansible_distribution_major_version }}','os': '{{ ansible_distribution }}','package': {{ packages.stdout_lines }} }"
+  vars:
+     packages_json: "{ 'version': '{{ ansible_distribution_major_version }}','os': '{{ ansible_distribution }}','package': {{ packages.stdout_lines }} }"
 
 
 tasks:
